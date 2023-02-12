@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pulse/screen/aig_policy_screen.dart';
+import 'package:pulse/screen/check_schedule_screen.dart';
+import 'package:pulse/screen/contact_us_screen.dart';
 import 'package:pulse/screen/inbox_screen.dart';
 import 'package:pulse/screen/service_status_screen.dart';
 import 'package:pulse/screen/station_screen.dart';
@@ -42,7 +45,7 @@ class HomeScreen extends StatelessWidget {
               horizontal: 16,
             ),
             child: InkWell(
-              onTap: (){
+              onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const InboxScreen()),
                 );
@@ -84,12 +87,13 @@ class HomeScreen extends StatelessWidget {
                         SizedBox(
                           width: 8,
                         ),
-                        Text(
-                          'All services are in normal conditions',
-                          style: TextStyle(
-                            color: Color(0xFF48C671),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                        Flexible(
+                          child: Text(
+                            'All services are in normal conditions',
+                            style: TextStyle(
+                              color: Color(0xFF48C671),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                       ],
@@ -229,7 +233,13 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const ContactUsScreen(),
+                            ),
+                          );
+                        },
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.15,
                           child: Column(
@@ -293,7 +303,13 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const AigPolicyScreen(),
+                            ),
+                          );
+                        },
                         child: SizedBox(
                           width: MediaQuery.of(context).size.width * 0.15,
                           child: Column(
@@ -416,6 +432,7 @@ class HomeScreen extends StatelessWidget {
           bottom: 0,
           right: 20,
           child: Container(
+            padding: const EdgeInsets.all(16),
             width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -429,24 +446,34 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  const Text(
-                    'Please enter your destination',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
+            child: Column(
+              children: [
+                const Text(
+                  'Please enter your destination',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
                   ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  TextField(
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                InkWell(
+                  onTap:(){
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const CheckScheduleScreen(),
+                      ),
+                    );
+                  },
+                  child: TextField(
+                    enabled: false,
+                    readOnly: true,
                     decoration: InputDecoration(
-                      hintText: 'Kampung Batu, Kuala Lumpur',
-                      enabledBorder: OutlineInputBorder(
+                      contentPadding: EdgeInsets.zero,
+                      isDense: true,
+                      hintText: 'Where to',
+                      disabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(
                           color: Colors.red,
@@ -455,12 +482,12 @@ class HomeScreen extends StatelessWidget {
                       prefixIcon: const Icon(
                         Icons.location_on_outlined,
                         color: Colors.red,
-                        size: 35,
+                        size: 30,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         )

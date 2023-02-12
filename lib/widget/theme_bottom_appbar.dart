@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pulse/screen/home_screen.dart';
 import 'package:pulse/screen/more_screen.dart';
+import 'package:pulse/screen/near_me_screen.dart';
 
 import '../screen/arrival_time_screen.dart';
 
@@ -78,25 +79,36 @@ class ThemeBottomAppbar extends StatelessWidget {
                 ],
               ),
             ),
-            Wrap(
-              direction: Axis.vertical,
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                Icon(
-                  Icons.near_me_outlined,
-                  color: selectedIndex == 2 ? Colors.red : Colors.grey,
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  'Near Me',
-                  style: TextStyle(
-                    color: selectedIndex == 2 ? const Color(0xFF0F3892) : Colors.grey,
-                    fontWeight: FontWeight.bold,
+            InkWell(
+              onTap: () {
+                if (selectedIndex != 2) {
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const NearMeScreen(),
+                    ),
+                  );
+                }
+              },
+              child: Wrap(
+                direction: Axis.vertical,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Icon(
+                    Icons.near_me_outlined,
+                    color: selectedIndex == 2 ? Colors.red : Colors.grey,
                   ),
-                )
-              ],
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    'Near Me',
+                    style: TextStyle(
+                      color: selectedIndex == 2 ? const Color(0xFF0F3892) : Colors.grey,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
             ),
             /*InkWell(
               onTap: () {
