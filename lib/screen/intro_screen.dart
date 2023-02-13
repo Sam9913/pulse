@@ -26,6 +26,9 @@ class IntroScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                 ),
                 MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   minWidth: MediaQuery.of(context).size.width * 0.6,
                   color: const Color(0xFF0F3892),
@@ -46,6 +49,9 @@ class IntroScreen extends StatelessWidget {
                   height: 16,
                 ),
                 MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   minWidth: MediaQuery.of(context).size.width * 0.6,
                   color: const Color(0xFF0F3892),
